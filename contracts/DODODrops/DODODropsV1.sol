@@ -1,5 +1,5 @@
 /*
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 */
 pragma solidity 0.6.9;
@@ -13,7 +13,7 @@ import {InitializableOwnable} from "../lib/InitializableOwnable.sol";
 import {Address} from "../external/utils/Address.sol";
 import {ERC721URIStorage} from "../external/ERC721/ERC721URIStorage.sol";
 
-contract DODODropsV1 is ERC721URIStorage, InitializableOwnable {
+contract PotatoDropsV1 is ERC721URIStorage, InitializableOwnable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
     using Address for address;

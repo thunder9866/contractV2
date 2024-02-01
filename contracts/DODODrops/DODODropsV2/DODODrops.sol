@@ -1,5 +1,5 @@
 /*
-    Copyright 2021 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 */
 pragma solidity 0.6.9;
@@ -23,7 +23,7 @@ interface IDropsNft {
     function mint(address account, uint256 id, uint256 amount, bytes memory data) external;
 }
 
-contract DODODrops is InitializableMintableERC20, ReentrancyGuard {
+contract PotatoDrops is InitializableMintableERC20, ReentrancyGuard {
     using SafeMath for uint256;
     using Address for address;
     using UniversalERC20 for IERC20;
