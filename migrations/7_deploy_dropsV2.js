@@ -138,48 +138,5 @@ module.exports = async (deployer, network, accounts) => {
         );
         logger.log("Init DODODrops Tx:", tx.tx);
 
-
-        if (network == 'kovan' || network == 'rinkeby') {
-
-            const DODOApproveProxyInstance = await DODOApproveProxy.at(DODOApproveProxyAddress);
-            var tx = await DODOApproveProxyInstance.unlockAddProxy(DropsProxyAddress);
-            logger.log("DODOApproveProxy unlockAddProxy tx: ", tx.tx);
-
-            tx = await DODOApproveProxyInstance.addDODOProxy();
-            logger.log("DODOApproveProxy addDODOProxy tx: ", tx.tx);
-
-
-            if (isProb) {
-                const DropsERC1155Instance = await DropsERC1155.at(DropsERC1155Address);
-                var tx = await DropsERC1155Instance.addMintAccount(DODODropsAddress);
-                logger.log("AddMinter DropsERC1155 Tx:", tx.tx);
-
-                await DODODropsInstance.setProbInfo(probIntervals, tokenIdMaps);
-
-            } else {
-                const DropsERC721Instance = await DropsERC721.at(DropsERC721Address);
-                var tx = await DropsERC721Instance.addMintAccount(DODODropsAddress);
-                logger.log("AddMinter DropsERC721 Tx:", tx.tx);
-                for (var i = 1; i <= 300; i++) {
-                    tokenIdList.push(i);
-                }
-                await DODODropsInstance.addFixedAmountInfo(tokenIdList);
-                tokenIdList = []
-                for (var i = 301; i <= 600; i++) {
-                    tokenIdList.push(i);
-                }
-                await DODODropsInstance.addFixedAmountInfo(tokenIdList);
-                tokenIdList = []
-                for (var i = 601; i <= 900; i++) {
-                    tokenIdList.push(i);
-                }
-                await DODODropsInstance.addFixedAmountInfo(tokenIdList);
-                tokenIdList = []
-                for (var i = 901; i <= 1106; i++) {
-                    tokenIdList.push(i);
-                }
-                await DODODropsInstance.addFixedAmountInfo(tokenIdList);
-            }
-        }
     }
 };

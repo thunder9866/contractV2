@@ -77,14 +77,8 @@ module.exports = {
   },
 
   api_keys: {
-    etherscan: process.env.ETHERSCAN_API_KEY,
-    arbiscan: process.env.ARBISCAN_API_KEY,
-    lineascan: LINEASCAN_API_KEY,
-    basescan: BASESCAN_API_KEY,
-    polygonscan: process.env.POLYGONSCAN_API_KEY,
     snowtrace: process.env.SNOWTRACE_API_KEY,
     scroll: "fakekey",
-    calderaexplorer:"fakekey",
   },
 
   networks: {
@@ -102,90 +96,6 @@ module.exports = {
       gasPrice: 1,
     },
 
-    kovan: {
-      networkCheckTimeout: 100000,
-      provider: function () {
-        return new HDWalletProvider(privKey, "https://kovan.infura.io/v3/" + infuraId);
-      },
-      gas: 12000000,
-      gasPrice: 10000000000,
-      network_id: 42,
-      skipDryRun: true
-    },
-
-    rinkeby: {
-      networkCheckTimeout: 100000,
-      provider: function () {
-        return new HDWalletProvider(privKey, "https://rinkeby.infura.io/v3/" + infuraId);
-      },
-      gas: 10000000,
-      gasPrice: 1500000000,
-      network_id: 4,
-      skipDryRun: true,
-      // confirmations: 10,
-      // timeoutBlocks: 200,
-    },
-
-    live: {
-      networkCheckTimeout: 100000,
-      provider: function () {
-        return new HDWalletProvider(privKey, "https://mainnet.infura.io/v3/" + infuraId);
-      },
-      gas: 4000000,
-      gasPrice: 60000000000,
-      network_id: 1,
-      skipDryRun: true
-    },
-
-    bsclive: {
-      provider: function () {
-        return new HDWalletProvider(privKey, "https://bsc-dataseed3.ninicoin.io");
-      },
-      networkCheckTimeout:100000,
-      network_id: 56,
-      confirmations: 10,
-      timeoutBlocks: 200,
-      gasPrice: 6000000000,
-      skipDryRun: true
-    },
-
-    heco: {
-      networkCheckTimeout: 100000,
-      provider: function () {
-        return new HDWalletProvider(privKey, "https://http-mainnet.hecochain.com");
-      },
-      gasPrice: 3000000000,
-      network_id: 128
-    },
-
-    moonriver: {
-      provider: () => {
-        return new HDWalletProvider(privKey, 'https://rpc.moonriver.moonbeam.network');
-      },
-      gasPrice: 2000000000,
-      network_id: 1285
-    },
-
-    avax: {
-      provider: () => {
-        return new HDWalletProvider(privKey, 'https://api.avax.network/ext/bc/C/rpc');
-      },
-      gasPrice: 30000000000,
-      network_id: 43114
-    },
-
-    aurora: {
-      networkCheckTimeout: 100000,
-      provider: () => {
-        let hdWalletProvider = new HDWalletProvider(privKey, 'https://mainnet.aurora.dev');
-        hdWalletProvider.engine.addProvider(new NonceTrackerSubprovider())
-        return hdWalletProvider
-      },
-      network_id: 0x4e454152,
-      gas: 10000000,
-      gasPrice: 30000000,
-    },
-
     ok: {
       networkCheckTimeout: 100000,
       provider: () => {
@@ -196,73 +106,6 @@ module.exports = {
       confirmations: 5,
       timeoutBlocks: 200,
       skipDryRun: true
-    },
-
-    boba: {
-      networkCheckTimeout: 100000,
-      provider: () => {
-        return new HDWalletProvider({
-          privateKeys: [privKey],
-          providerOrUrl: 'https://mainnet.boba.network',
-          chainId: 288
-        })
-      },
-      network_id: 288,
-      gasPrice: 1000000000,
-      timeoutBlocks: 200,
-      skipDryRun: true
-    },
-
-    neon_test: {
-      networkCheckTimeout: 100000,
-      provider: () => {
-        return new HDWalletProvider(privKey, 'https://proxy.testnet.neonlabs.org/solana')
-      },
-      network_id: 111,
-      gasPrice: 0
-    },
-
-    arb: {
-      networkCheckTimeout: 100000,
-      provider: function () {
-        return new HDWalletProvider(privKey, "https://arb1.arbitrum.io/rpc")
-      },
-      network_id: '42161',
-      gas: 2000000,
-      gasPrice: 1000000000,
-      skipDryRun: true
-    },
-
-    matic: {
-      networkCheckTimeout: 1000000,
-      provider: () => {
-        return new HDWalletProvider(privKey, 'https://polygon-mainnet.infura.io/v3/' + infuraId)
-      },
-      network_id: 137,
-      gas: 6000000,
-      gasPrice: 35000000000,
-      // confirmations: 2,
-      // timeoutBlocks: 200,
-      skipDryRun: true
-    },
-    base: {
-      networkCheckTimeout: 1000000,
-      provider: () => {
-        return new HDWalletProvider(privKey, 'https://goerli.base.org')
-      },
-      network_id: 84531,
-      gas: 6000000,
-      gasPrice: 35000000000,
-      // confirmations: 2,
-      // timeoutBlocks: 200,
-      skipDryRun: true
-    },
-
-    optimism: {
-      provider: () => {
-        return new HDWalletProvider(privKey, 'https://mainnet.optimism.io')
-      },
-      network_id: "10"
     },
 
     coverage: {
