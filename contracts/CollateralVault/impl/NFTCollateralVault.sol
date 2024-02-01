@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -39,7 +39,7 @@ contract NFTCollateralVault is InitializableOwnable, IERC721Receiver, IERC1155Re
 
     // ============ TransferFrom NFT ============
     function depositERC721(address nftContract, uint256[] memory tokenIds) public {
-        require(nftContract != address(0), "DODONftVault: ZERO_ADDRESS");
+        require(nftContract != address(0), "PotatoNftVault: ZERO_ADDRESS");
         for(uint256 i = 0; i < tokenIds.length; i++) {
             IERC721(nftContract).safeTransferFrom(msg.sender, address(this), tokenIds[i]);
             // emit AddNftToken(nftContract, tokenIds[i], 1);
@@ -47,7 +47,7 @@ contract NFTCollateralVault is InitializableOwnable, IERC721Receiver, IERC1155Re
     }
 
     function depoistERC1155(address nftContract, uint256[] memory tokenIds, uint256[] memory amounts) public {
-        require(nftContract != address(0), "DODONftVault: ZERO_ADDRESS");
+        require(nftContract != address(0), "PotatoNftVault: ZERO_ADDRESS");
         require(tokenIds.length == amounts.length, "PARAMS_NOT_MATCH");
         IERC1155(nftContract).safeBatchTransferFrom(msg.sender, address(this), tokenIds, amounts, "");
         // for(uint256 i = 0; i < tokenIds.length; i++) {
@@ -57,21 +57,21 @@ contract NFTCollateralVault is InitializableOwnable, IERC721Receiver, IERC1155Re
 
     // ============ Ownable ============
     function directTransferOwnership(address newOwner) external onlyOwner {
-        require(newOwner != address(0), "DODONftVault: ZERO_ADDRESS");
+        require(newOwner != address(0), "PotatoNftVault: ZERO_ADDRESS");
         emit OwnershipTransferred(_OWNER_, newOwner);
         _OWNER_ = newOwner;
     }
 
     function createFragment(address nftProxy, bytes calldata data) external preventReentrant onlyOwner {
-        require(nftProxy != address(0), "DODONftVault: PROXY_INVALID");
+        require(nftProxy != address(0), "PotatoNftVault: PROXY_INVALID");
         _OWNER_ = nftProxy;
         (bool success,) = nftProxy.call(data);
-        require(success, "DODONftVault: TRANSFER_OWNER_FAILED");
+        require(success, "PotatoNftVault: TRANSFER_OWNER_FAILED");
         emit OwnershipTransferred(_OWNER_, nftProxy);
     }
 
     function withdrawERC721(address nftContract, uint256[] memory tokenIds) external onlyOwner {
-        require(nftContract != address(0), "DODONftVault: ZERO_ADDRESS");
+        require(nftContract != address(0), "PotatoNftVault: ZERO_ADDRESS");
         for(uint256 i = 0; i < tokenIds.length; i++) {
             IERC721(nftContract).safeTransferFrom(address(this), _OWNER_, tokenIds[i]);
             emit RemoveNftToken(nftContract, tokenIds[i], 1);
@@ -79,7 +79,7 @@ contract NFTCollateralVault is InitializableOwnable, IERC721Receiver, IERC1155Re
     }
 
     function withdrawERC1155(address nftContract, uint256[] memory tokenIds, uint256[] memory amounts) external onlyOwner {
-        require(nftContract != address(0), "DODONftVault: ZERO_ADDRESS");
+        require(nftContract != address(0), "PotatoNftVault: ZERO_ADDRESS");
         require(tokenIds.length == amounts.length, "PARAMS_NOT_MATCH");
         IERC1155(nftContract).safeBatchTransferFrom(address(this), _OWNER_, tokenIds, amounts, "");
         for(uint256 i = 0; i < tokenIds.length; i++) {
