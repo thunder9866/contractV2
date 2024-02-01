@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2020 Potato ZOO.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -12,14 +12,14 @@ import {DSPVault} from "./DSPVault.sol";
 import {SafeMath} from "../../lib/SafeMath.sol";
 import {DecimalMath} from "../../lib/DecimalMath.sol";
 import {PMMPricing} from "../../lib/PMMPricing.sol";
-import {IDODOCallee} from "../../intf/IDODOCallee.sol";
+import {IPotatoCallee} from "../../intf/IPotatoCallee.sol";
 
 contract DSPTrader is DSPVault {
     using SafeMath for uint256;
 
     // ============ Events ============
 
-    event DODOSwap(
+    event PotatoSwap(
         address fromToken,
         address toToken,
         uint256 fromAmount,
@@ -28,7 +28,7 @@ contract DSPTrader is DSPVault {
         address receiver
     );
 
-    event DODOFlashLoan(address borrower, address assetTo, uint256 baseAmount, uint256 quoteAmount);
+    event PotatoFlashLoan(address borrower, address assetTo, uint256 baseAmount, uint256 quoteAmount);
 
     event RChange(PMMPricing.RState newRState);
 
@@ -55,7 +55,7 @@ contract DSPTrader is DSPVault {
 
         _setReserve(baseBalance, _QUOTE_TOKEN_.balanceOf(address(this)));
 
-        emit DODOSwap(
+        emit PotatoSwap(
             address(_BASE_TOKEN_),
             address(_QUOTE_TOKEN_),
             baseInput,
@@ -89,7 +89,7 @@ contract DSPTrader is DSPVault {
 
         _setReserve(_BASE_TOKEN_.balanceOf(address(this)), quoteBalance);
 
-        emit DODOSwap(
+        emit PotatoSwap(
             address(_QUOTE_TOKEN_),
             address(_BASE_TOKEN_),
             quoteInput,
@@ -109,7 +109,7 @@ contract DSPTrader is DSPVault {
         _transferQuoteOut(assetTo, quoteAmount);
 
         if (data.length > 0)
-            IDODOCallee(assetTo).DSPFlashLoanCall(msg.sender, baseAmount, quoteAmount, data);
+            IPotatoCallee(assetTo).DSPFlashLoanCall(msg.sender, baseAmount, quoteAmount, data);
 
         uint256 baseBalance = _BASE_TOKEN_.balanceOf(address(this));
         uint256 quoteBalance = _QUOTE_TOKEN_.balanceOf(address(this));
@@ -142,7 +142,7 @@ contract DSPTrader is DSPVault {
                 _RState_ = uint32(newRState);
                 emit RChange(newRState);
             }
-            emit DODOSwap(
+            emit PotatoSwap(
                 address(_QUOTE_TOKEN_),
                 address(_BASE_TOKEN_),
                 quoteInput,
@@ -174,7 +174,7 @@ contract DSPTrader is DSPVault {
                 _RState_ = uint32(newRState);
                 emit RChange(newRState);
             }
-            emit DODOSwap(
+            emit PotatoSwap(
                 address(_BASE_TOKEN_),
                 address(_QUOTE_TOKEN_),
                 baseInput,
@@ -186,7 +186,7 @@ contract DSPTrader is DSPVault {
 
         _sync();
 
-        emit DODOFlashLoan(msg.sender, assetTo, baseAmount, quoteAmount);
+        emit PotatoFlashLoan(msg.sender, assetTo, baseAmount, quoteAmount);
     }
 
     // ============ Query Functions ============

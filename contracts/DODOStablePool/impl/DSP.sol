@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2020 Potato ZOO.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -15,10 +15,10 @@ import {DSPFunding} from "./DSPFunding.sol";
 import {DSPVault} from "./DSPVault.sol";
 
 /**
- * @title DODO StablePool
- * @author DODO Breeder
+ * @title Potato StablePool
+ * @author Potato Breeder
  *
- * @notice DODOStablePool initialization
+ * @notice PotatoStablePool initialization
  */
 contract DSP is DSPTrader, DSPFunding {
     function init(

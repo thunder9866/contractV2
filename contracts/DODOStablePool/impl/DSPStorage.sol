@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2020 Potato ZOO.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -10,7 +10,7 @@ pragma experimental ABIEncoderV2;
 
 import {ReentrancyGuard} from "../../lib/ReentrancyGuard.sol";
 import {SafeMath} from "../../lib/SafeMath.sol";
-import {DODOMath} from "../../lib/DODOMath.sol";
+import {PotatoMath} from "../../lib/PotatoMath.sol";
 import {DecimalMath} from "../../lib/DecimalMath.sol";
 import {IFeeRateModel} from "../../lib/FeeRateModel.sol";
 import {IERC20} from "../../intf/IERC20.sol";

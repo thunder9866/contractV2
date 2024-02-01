@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -10,7 +10,7 @@ pragma experimental ABIEncoderV2;
 
 import {DSPVault} from "./DSPVault.sol";
 import {DecimalMath} from "../../lib/DecimalMath.sol";
-import {IDODOCallee} from "../../intf/IDODOCallee.sol";
+import {IPotatoCallee} from "../../intf/IPotatoCallee.sol";
 
 contract DSPFunding is DSPVault {
     // ============ Events ============
@@ -103,7 +103,7 @@ contract DSPFunding is DSPVault {
 
         if (data.length > 0) {
             //Same as DVM 
-            IDODOCallee(to).DVMSellShareCall(
+            IPotatoCallee(to).DVMSellShareCall(
                 msg.sender,
                 shareAmount,
                 baseAmount,

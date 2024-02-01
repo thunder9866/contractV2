@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2020 Potato ZOO.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -222,7 +222,7 @@ contract DSPVault is DSPStorage {
         bytes32 r,
         bytes32 s
     ) external {
-        require(deadline >= block.timestamp, "DODO_DSP_LP: EXPIRED");
+        require(deadline >= block.timestamp, "Potato_DSP_LP: EXPIRED");
         bytes32 digest =
             keccak256(
                 abi.encodePacked(
@@ -243,7 +243,7 @@ contract DSPVault is DSPStorage {
         address recoveredAddress = ecrecover(digest, v, r, s);
         require(
             recoveredAddress != address(0) && recoveredAddress == owner,
-            "DODO_DSP_LP: INVALID_SIGNATURE"
+            "Potato_DSP_LP: INVALID_SIGNATURE"
         );
         _approve(owner, spender, value);
     }
