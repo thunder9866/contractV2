@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -14,11 +14,11 @@ import {Ownable} from "../../lib/Ownable.sol";
 import {SafeERC20} from "../../lib/SafeERC20.sol";
 import {IERC20} from "../../intf/IERC20.sol";
 import {CPFunding} from "./CPFunding.sol";
-import {IDODOCallee} from "../../intf/IDODOCallee.sol";
+import {IPotatoCallee} from "../../intf/IPotatoCallee.sol";
 
 /**
  * @title CPVesting
- * @author DODO Breeder
+ * @author Potato Breeder
  *
  * @notice Lock Token and release it linearly
  */
@@ -74,7 +74,7 @@ contract CPVesting is CPFunding {
         _transferQuoteOut(to, quoteAmount);
 
 		if(data.length>0){
-			IDODOCallee(to).CPClaimBidCall(msg.sender,0,quoteAmount,data);
+			IPotatoCallee(to).CPClaimBidCall(msg.sender,0,quoteAmount,data);
 		}
 
         emit ClaimQuoteToken(msg.sender, quoteAmount);

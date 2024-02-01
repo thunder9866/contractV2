@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2020 Potato ZOO.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -15,8 +15,8 @@ import {IFeeRateModel} from "../../lib/FeeRateModel.sol";
 import {SafeMath} from "../../lib/SafeMath.sol";
 
 /**
- * @title DODO CrowdPooling
- * @author DODO Breeder
+ * @title Potato CrowdPooling
+ * @author Potato Breeder
  *
  * @notice CrowdPooling initialization
  */

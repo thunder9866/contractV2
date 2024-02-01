@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -12,11 +12,11 @@ import {SafeMath} from "../../lib/SafeMath.sol";
 import {SafeERC20} from "../../lib/SafeERC20.sol";
 import {DecimalMath} from "../../lib/DecimalMath.sol";
 import {IERC20} from "../../intf/IERC20.sol";
-import {IDVM} from "../../DODOVendingMachine/intf/IDVM.sol";
+import {IDVM} from "../../PotatoVendingMachine/intf/IDVM.sol";
 import {IDVMFactory} from "../../Factory/DVMFactory.sol";
 import {CPStorage} from "./CPStorage.sol";
 import {PMMPricing} from "../../lib/PMMPricing.sol";
-import {IDODOCallee} from "../../intf/IDODOCallee.sol";
+import {IPotatoCallee} from "../../intf/IPotatoCallee.sol";
 
 contract CPFunding is CPStorage {
     using SafeERC20 for IERC20;
@@ -53,7 +53,7 @@ contract CPFunding is CPStorage {
         _sync();
 
         if(data.length > 0){
-            IDODOCallee(to).CPCancelCall(msg.sender,amount,data);
+            IPotatoCallee(to).CPCancelCall(msg.sender,amount,data);
         }
 
         emit Cancel(msg.sender,amount);
@@ -89,7 +89,7 @@ contract CPFunding is CPStorage {
             _poolQuoteToken = address(_QUOTE_TOKEN_);
         }
 
-        _POOL_ = IDVMFactory(_POOL_FACTORY_).createDODOVendingMachine(
+        _POOL_ = IDVMFactory(_POOL_FACTORY_).createPotatoVendingMachine(
             _poolBaseToken,
             _poolQuoteToken,
             _POOL_FEE_RATE_,
