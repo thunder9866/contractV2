@@ -12,7 +12,7 @@ Coming soon
 
 ### Disclosure
 
-Any vulnerability or bug discovered must be reported only to the following email: contact@dodoex.io; must not be disclosed publicly; must not be disclosed to any other person, entity or email address prior to disclosure to the contact@potatoswap.finance email; and must not be disclosed in any way other than to the contact@potatoswap.finance email. In addition, disclosure to contact@dodoex.io must be made promptly following discovery of the vulnerability. Please include as much information about the vulnerability as possible, including:
+Any vulnerability or bug discovered must be reported only to the following email: contact@potatoswap.finance; must not be disclosed publicly; must not be disclosed to any other person, entity or email address prior to disclosure to the contact@potatoswap.finance email; and must not be disclosed in any way other than to the contact@potatoswap.finance email. In addition, disclosure to contact@potatoswap.finance must be made promptly following discovery of the vulnerability. Please include as much information about the vulnerability as possible, including:
 
  - The conditions on which reproducing the bug is contingent.
  - The steps needed to reproduce the bug or, preferably, a proof of concept.
