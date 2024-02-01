@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -12,14 +12,14 @@ import {IERC20} from "../intf/IERC20.sol";
 import {SafeMath} from "../lib/SafeMath.sol";
 
 
-contract vDODOQuota is InitializableOwnable {
+contract vPotatoQuota is InitializableOwnable {
     using SafeMath for uint256;
-    address public immutable _VDODO_TOKEN_;
+    address public immutable _VPotato_TOKEN_;
     uint256 public _QUOTA_RATIO_;
     uint256 public _BASE_QUOTA_;
 
-    constructor(address vdodoToken) public {
-        _VDODO_TOKEN_ = vdodoToken;
+    constructor(address vpotatoToken) public {
+        _VPotato_TOKEN_ = vpotatoToken;
     }
 
     function setParams(uint256 quotaRatio, uint256 baseQuota) external onlyOwner {
@@ -28,7 +28,7 @@ contract vDODOQuota is InitializableOwnable {
     }
 
     function getUserQuota(address user) external view returns (int) {
-        uint256 vDODOAmount = IERC20(_VDODO_TOKEN_).balanceOf(user);
-        return int(vDODOAmount.div(_QUOTA_RATIO_).add(_BASE_QUOTA_));
+        uint256 vPotatoAmount = IERC20(_VPotato_TOKEN_).balanceOf(user);
+        return int(vPotatoAmount.div(_QUOTA_RATIO_).add(_BASE_QUOTA_));
     }
 }

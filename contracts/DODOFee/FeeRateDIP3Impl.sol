@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2021 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -145,7 +145,7 @@ contract FeeRateDIP3Impl is InitializableOwnable {
                     if(quotaAddr != address(0))
                         curQuota = IQuota(quotaAddr).getUserQuota(user);
 
-                    require(curQuota == -1 || (curQuota != -1 && int(userInput.add(userStake)) <= curQuota), "DODOFeeImpl: EXCEED_YOUR_QUOTA");
+                    require(curQuota == -1 || (curQuota != -1 && int(userInput.add(userStake)) <= curQuota), "PotatoFeeImpl: EXCEED_YOUR_QUOTA");
 
                     if(feeAddr == address(0)) {
                         return 0;

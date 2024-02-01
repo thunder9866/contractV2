@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2022 DODO ZOO.
+    Copyright 2022 Potato ZOO.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -19,8 +19,8 @@ interface IQuota {
 
 
 /**
- * @title DODO UserQuotaFactory
- * @author DODO Breeder
+ * @title Potato UserQuotaFactory
+ * @author Potato Breeder
  *
  */
 contract UserQuotaFactory is InitializableOwnable{
