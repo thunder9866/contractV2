@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2021 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -13,10 +13,10 @@ import {IERC20} from "../../../intf/IERC20.sol";
 import {DPPTrader} from "./DPPTrader.sol";
 
 /**
- * @title DODO PrivatePool
- * @author DODO Breeder
+ * @title Potato PrivatePool
+ * @author Potato Breeder
  *
- * @notice DODOPrivatePool with oracle price
+ * @notice PotatoPrivatePool with oracle price
  */
 contract DPPOracle is DPPTrader {
 

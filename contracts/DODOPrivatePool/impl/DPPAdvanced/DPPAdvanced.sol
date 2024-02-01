@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -11,10 +11,10 @@ pragma experimental ABIEncoderV2;
 import {DPP} from "../DPP.sol";
 
 /**
- * @title DODO PrivatePool
- * @author DODO Breeder
+ * @title Potato PrivatePool
+ * @author Potato Breeder
  *
- * @notice Advanced DODOPrivatePool
+ * @notice Advanced PotatoPrivatePool
  */
 contract DPPAdvanced is DPP {
 

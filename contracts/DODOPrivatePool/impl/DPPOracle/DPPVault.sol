@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -10,7 +10,7 @@ pragma experimental ABIEncoderV2;
 
 import {DPPStorage} from "./DPPStorage.sol";
 import {IERC20} from "../../../intf/IERC20.sol";
-import {IDODOCallee} from "../../../intf/IDODOCallee.sol";
+import {IPotatoCallee} from "../../../intf/IPotatoCallee.sol";
 import {SafeMath} from "../../../lib/SafeMath.sol";
 import {DecimalMath} from "../../../lib/DecimalMath.sol";
 import {SafeERC20} from "../../../lib/SafeERC20.sol";

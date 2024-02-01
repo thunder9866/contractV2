@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -9,19 +9,19 @@ pragma solidity 0.6.9;
 pragma experimental ABIEncoderV2;
 
 import {IDPP} from "../../intf/IDPP.sol";
-import {IDODOApproveProxy} from "../../../SmartRoute/DODOApproveProxy.sol";
+import {IPotatoApproveProxy} from "../../../SmartRoute/PotatoApproveProxy.sol";
 import {InitializableOwnable} from "../../../lib/InitializableOwnable.sol";
 
 /**
  * @title DPPAdmin
- * @author DODO Breeder
+ * @author Potato Breeder
  *
- * @notice Admin of Advanced DODOPrivatePool
+ * @notice Admin of Advanced PotatoPrivatePool
  */
 contract DPPAdvancedAdmin is InitializableOwnable {
     address public _DPP_;
     address public _OPERATOR_;
-    address public _DODO_APPROVE_PROXY_;
+    address public _Potato_APPROVE_PROXY_;
     uint256 public _FREEZE_TIMESTAMP_;
 
 
@@ -34,12 +34,12 @@ contract DPPAdvancedAdmin is InitializableOwnable {
         address owner,
         address dpp,
         address operator,
-        address dodoApproveProxy
+        address potatoApproveProxy
     ) external {
         initOwner(owner);
         _DPP_ = dpp;
         _OPERATOR_ = operator;
-        _DODO_APPROVE_PROXY_ = dodoApproveProxy;
+        _Potato_APPROVE_PROXY_ = potatoApproveProxy;
     }
 
     function sync() external notFreezed onlyOwner {
@@ -72,7 +72,7 @@ contract DPPAdvancedAdmin is InitializableOwnable {
     ) external notFreezed returns (bool) {
         require(
             msg.sender == _OWNER_ ||
-                (IDODOApproveProxy(_DODO_APPROVE_PROXY_).isAllowedProxy(msg.sender) &&
+                (IPotatoApproveProxy(_Potato_APPROVE_PROXY_).isAllowedProxy(msg.sender) &&
                     operator == _OPERATOR_),
             "TUNEPARAMS FORBIDDEN！"
         );
@@ -94,7 +94,7 @@ contract DPPAdvancedAdmin is InitializableOwnable {
     ) external notFreezed returns (bool) {
         require(
             msg.sender == _OWNER_ ||
-                (IDODOApproveProxy(_DODO_APPROVE_PROXY_).isAllowedProxy(msg.sender) &&
+                (IPotatoApproveProxy(_Potato_APPROVE_PROXY_).isAllowedProxy(msg.sender) &&
                     operator == _OPERATOR_),
             "TUNEPRICE FORBIDDEN！"
         );
@@ -118,7 +118,7 @@ contract DPPAdvancedAdmin is InitializableOwnable {
     ) external notFreezed returns (bool) {
         require(
             msg.sender == _OWNER_ ||
-                (IDODOApproveProxy(_DODO_APPROVE_PROXY_).isAllowedProxy(msg.sender) &&
+                (IPotatoApproveProxy(_Potato_APPROVE_PROXY_).isAllowedProxy(msg.sender) &&
                     operator == _OPERATOR_),
             "RESET FORBIDDEN！"
         );
