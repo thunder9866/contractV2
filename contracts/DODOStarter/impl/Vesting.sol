@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2022 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -13,7 +13,7 @@ import {SafeMath} from "../../lib/SafeMath.sol";
 import {DecimalMath} from "../../lib/DecimalMath.sol";
 import {IERC20} from "../../intf/IERC20.sol";
 import {SafeERC20} from "../../lib/SafeERC20.sol";
-import {IDVM} from "../../DODOVendingMachine/intf/IDVM.sol";
+import {IDVM} from "../../PotatoVendingMachine/intf/IDVM.sol";
 import {IDVMFactory} from "../../Factory/DVMFactory.sol";
 
 contract Vesting is Storage {
@@ -93,7 +93,7 @@ contract Vesting is Storage {
     }
 
     function _initializeLiquidity(uint256 initialTokenAmount, uint256 totalUsedRaiseFunds, uint256 lpFeeRate, bool isOpenTWAP) internal {
-        _INITIAL_POOL_ = IDVMFactory(_POOL_FACTORY_).createDODOVendingMachine(
+        _INITIAL_POOL_ = IDVMFactory(_POOL_FACTORY_).createPotatoVendingMachine(
             _TOKEN_ADDRESS_,
             _FUNDS_ADDRESS_,
             lpFeeRate,

@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2022 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -8,7 +8,7 @@
 pragma solidity 0.6.9;
 pragma experimental ABIEncoderV2;
 
-interface IDODOStarter {
+interface IPotatoStarter {
     //Instant mode
     function init(
         address[] calldata addressList,
