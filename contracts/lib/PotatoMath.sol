@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -12,16 +12,16 @@ import {SafeMath} from "./SafeMath.sol";
 import {DecimalMath} from "./DecimalMath.sol";
 
 /**
- * @title DODOMath
- * @author DODO Breeder
+ * @title PotatoMath
+ * @author Potato Breeder
  *
  * @notice Functions for complex calculating. Including ONE Integration and TWO Quadratic solutions
  */
-library DODOMath {
+library PotatoMath {
     using SafeMath for uint256;
 
     /*
-        Integrate dodo curve from V1 to V2
+        Integrate potato curve from V1 to V2
         require V0>=V1>=V2>0
         res = (1-k)i(V1-V2)+ikV0*V0(1/V2-1/V1)
         let V1-V2=delta
@@ -188,7 +188,7 @@ library DODOMath {
         if (bSig) {
             numerator = squareRoot.sub(bAbs);
             if (numerator == 0) {
-                revert("DODOMath: should not be zero");
+                revert("PotatoMath: should not be zero");
             }
         } else {
             numerator = bAbs.add(squareRoot);

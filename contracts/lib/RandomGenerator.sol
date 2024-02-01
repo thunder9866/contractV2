@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -11,7 +11,7 @@ interface IRandomGenerator {
     function random(uint256 seed) external view returns (uint256);
 }
 
-interface IDODOMidPrice {
+interface IPotatoMidPrice {
     function getMidPrice() external view returns (uint256 midPrice);
 }
 
@@ -27,7 +27,7 @@ contract RandomGenerator is IRandomGenerator{
     function random(uint256 seed) external override view returns (uint256) {
         uint256 priceSum;
         for (uint256 i = 0; i < pools.length; i++) {
-            priceSum += IDODOMidPrice(pools[i]).getMidPrice();
+            priceSum += IPotatoMidPrice(pools[i]).getMidPrice();
         }
         return uint256(keccak256(abi.encodePacked(blockhash(block.number-1), priceSum, seed)));
     }

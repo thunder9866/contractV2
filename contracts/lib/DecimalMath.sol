@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -12,7 +12,7 @@ import {SafeMath} from "./SafeMath.sol";
 
 /**
  * @title DecimalMath
- * @author DODO Breeder
+ * @author Potato Breeder
  *
  * @notice Functions for fixed point number with 18 decimals
  */

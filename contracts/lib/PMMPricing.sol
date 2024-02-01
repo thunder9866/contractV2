@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -10,13 +10,13 @@ pragma experimental ABIEncoderV2;
 
 import {SafeMath} from "../lib/SafeMath.sol";
 import {DecimalMath} from "../lib/DecimalMath.sol";
-import {DODOMath} from "../lib/DODOMath.sol";
+import {PotatoMath} from "../lib/PotatoMath.sol";
 
 /**
  * @title Pricing
- * @author DODO Breeder
+ * @author Potato Breeder
  *
- * @notice DODO Pricing model
+ * @notice Potato Pricing model
  */
 
 library PMMPricing {
@@ -123,7 +123,7 @@ library PMMPricing {
         // in theory Q2 <= targetQuoteTokenAmount
         // however when amount is close to 0, precision problems may cause Q2 > targetQuoteTokenAmount
         return
-            DODOMath._SolveQuadraticFunctionForTrade(
+            PotatoMath._SolveQuadraticFunctionForTrade(
                 state.Q0,
                 state.Q0,
                 payBaseAmount,
@@ -140,7 +140,7 @@ library PMMPricing {
         )
     {
         return
-            DODOMath._SolveQuadraticFunctionForTrade(
+            PotatoMath._SolveQuadraticFunctionForTrade(
                 state.B0,
                 state.B0,
                 payQuoteAmount,
@@ -159,7 +159,7 @@ library PMMPricing {
         )
     {
         return
-            DODOMath._GeneralIntegrate(
+            PotatoMath._GeneralIntegrate(
                 state.Q0,
                 state.Q.add(payQuoteAmount),
                 state.Q,
@@ -176,7 +176,7 @@ library PMMPricing {
         )
     {
         return
-            DODOMath._SolveQuadraticFunctionForTrade(
+            PotatoMath._SolveQuadraticFunctionForTrade(
                 state.Q0,
                 state.Q,
                 payBaseAmount,
@@ -195,7 +195,7 @@ library PMMPricing {
         )
     {
         return
-            DODOMath._GeneralIntegrate(
+            PotatoMath._GeneralIntegrate(
                 state.B0,
                 state.B.add(payBaseAmount),
                 state.B,
@@ -212,7 +212,7 @@ library PMMPricing {
         )
     {
         return
-            DODOMath._SolveQuadraticFunctionForTrade(
+            PotatoMath._SolveQuadraticFunctionForTrade(
                 state.B0,
                 state.B,
                 payQuoteAmount,
@@ -225,14 +225,14 @@ library PMMPricing {
 
     function adjustedTarget(PMMState memory state) internal pure {
         if (state.R == RState.BELOW_ONE) {
-            state.Q0 = DODOMath._SolveQuadraticFunctionForTarget(
+            state.Q0 = PotatoMath._SolveQuadraticFunctionForTarget(
                 state.Q,
                 state.B.sub(state.B0),
                 state.i,
                 state.K
             );
         } else if (state.R == RState.ABOVE_ONE) {
-            state.B0 = DODOMath._SolveQuadraticFunctionForTarget(
+            state.B0 = PotatoMath._SolveQuadraticFunctionForTarget(
                 state.B,
                 state.Q.sub(state.Q0),
                 DecimalMath.reciprocalFloor(state.i),

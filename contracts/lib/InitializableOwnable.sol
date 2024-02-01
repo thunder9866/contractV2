@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -10,7 +10,7 @@ pragma experimental ABIEncoderV2;
 
 /**
  * @title Ownable
- * @author DODO Breeder
+ * @author Potato Breeder
  *
  * @notice Ownership related functions
  */
@@ -28,7 +28,7 @@ contract InitializableOwnable {
     // ============ Modifiers ============
 
     modifier notInitialized() {
-        require(!_INITIALIZED_, "DODO_INITIALIZED");
+        require(!_INITIALIZED_, "Potato_INITIALIZED");
         _;
     }
 

@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2020 DODO ZOO.
+    Copyright 2024 Potato Swap.
     SPDX-License-Identifier: Apache-2.0
 
 */
@@ -11,7 +11,7 @@ pragma experimental ABIEncoderV2;
 
 /**
  * @title SafeMath
- * @author DODO Breeder
+ * @author Potato Breeder
  *
  * @notice Math operations with safety checks that revert on error
  */
